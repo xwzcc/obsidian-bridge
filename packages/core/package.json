@@ -1,0 +1,48 @@
+{
+  "name": "@obsidian-bridge/core",
+  "version": "0.1.1",
+  "description": "Core utilities and types for Obsidian Bridge - Minecraft Java ↔ Bedrock Edition protocol bridge",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "keywords": [
+    "minecraft",
+    "obsidian-bridge",
+    "protocol",
+    "java-edition",
+    "bedrock-edition",
+    "bridge",
+    "proxy",
+    "cross-play",
+    "varint",
+    "utilities"
+  ],
+  "author": "xwzcc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xwzcc/obsidian-bridge.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/xwzcc/obsidian-bridge/issues"
+  },
+  "homepage": "https://github.com/xwzcc/obsidian-bridge/blob/master/README.MD",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

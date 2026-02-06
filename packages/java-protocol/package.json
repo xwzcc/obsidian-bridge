@@ -1,0 +1,13 @@
+{
+  "name": "@obsidian-bridge/java-protocol",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@obsidian-bridge/core": "workspace:*",
+    "@obsidian-bridge/nbt": "workspace:*"
+  }
+}
