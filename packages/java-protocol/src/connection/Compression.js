@@ -3,30 +3,29 @@
  */
 
 const zlib = require("zlib");
-const { VarInt, BufferReader, BufferWriter } = require("../../../core/src");
-const { write } = require("fs");
+const { VarInt, BufferReader, BufferWriter } = require("@obsidian-bridge/core");
 
 class Compression {
   constructor() {
     this.enabled = false;
-    this.treshold = -1;
+    this.threshold = -1;
   }
 
   /**
    * Enable compression
-   * @param {number} treshold - minimum size to compress (bytes)
+   * @param {number} threshold - minimum size to compress (bytes)
    */
-  enable(treshold) {
+  enable(threshold) {
     this.enabled = true;
-    this.treshold = treshold;
+    this.threshold = threshold;
   }
 
   /**
    * Disable compression
    */
-  disable(treshold) {
+  disable() {
     this.enabled = false;
-    this.treshold = -1;
+    this.threshold = -1;
   }
 
   /**
@@ -43,24 +42,25 @@ class Compression {
    * @returns {Buffer} - compressed packet (with length prefix)
    */
   compress(data) {
-    if (!this.enable) {
+    if (!this.enabled) {
       return data;
     }
 
     const writer = new BufferWriter();
 
-    if (data.length < this.treshold) {
+    if (data.length < this.threshold) {
       writer.writeVarInt(0);
-      writer.writeByte(data);
-      return writer.toBuffer();
+      writer.writeBytes(data);
+      return writer.getBuffer();
     }
 
+    // Compress with zlib
     const compressed = zlib.deflateSync(data);
 
     writer.writeVarInt(data.length);
     writer.writeBytes(compressed);
 
-    return writer.toBuffer();
+    return writer.getBuffer();
   }
 
   /**
@@ -73,11 +73,23 @@ class Compression {
       return data;
     }
 
-    const reader = new BufferReader();
+    const reader = new BufferReader(data);
     const dataLength = reader.readVarInt();
-
     if (dataLength === 0) {
       return reader.readRemaining();
     }
+
+    const compressed = reader.readRemaining();
+    const decompressed = zlib.inflateSync(compressed);
+
+    if (decompressed.length !== dataLength) {
+      throw new Error(
+        `Decompressed size mismatch: expected ${dataLength}, got ${decompressed.length}`,
+      );
+    }
+
+    return decompressed;
   }
 }
+
+module.exports = Compression;

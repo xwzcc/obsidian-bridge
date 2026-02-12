@@ -1,0 +1,43 @@
+{
+  "name": "@obsidian-bridge/world",
+  "version": "0.1.0",
+  "description": "Minecraft world representation and chunk storage for Obsidian Bridge",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
+  "keywords": [
+    "minecraft",
+    "obsidian-bridge",
+    "world",
+    "chunk",
+    "blocks",
+    "voxel"
+  ],
+  "author": "xwzcc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xwzcc/obsidian-bridge.git",
+    "directory": "packages/world"
+  },
+  "bugs": {
+    "url": "https://github.com/xwzcc/obsidian-bridge/issues"
+  },
+  "homepage": "https://github.com/xwzcc/obsidian-bridge/blob/master/packages/world/README.md",
+  "dependencies": {
+    "@obsidian-bridge/core": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

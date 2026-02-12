@@ -32,3 +32,5 @@ class Packet {
     return `${this.constructor.name}`;
   }
 }
+
+module.exports = Packet;

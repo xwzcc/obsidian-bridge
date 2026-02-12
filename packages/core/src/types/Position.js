@@ -31,7 +31,7 @@ class Position {
   static decode(encoded) {
     let x = Number(encoded >> 38n);
     let y = Number(encoded & 0xfffn);
-    let z = Number(encoded >> 12n) & 0x3ffffffn;
+    let z = Number((encoded >> 12n) & 0x3ffffffn);
 
     if (x >= 0x2000000) x -= 0x4000000;
     if (y >= 0x800) y -= 0x1000;

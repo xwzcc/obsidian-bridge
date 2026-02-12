@@ -1,13 +1,47 @@
 {
   "name": "@obsidian-bridge/java-protocol",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "./src/index.js",
+  "version": "0.3.0",
+  "description": "Minecraft Java Edition protocol implementation for Obsidian Bridge - Protocol 773 (1.21.10)",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "exports": {
     ".": "./src/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
+  "keywords": [
+    "minecraft",
+    "obsidian-bridge",
+    "protocol",
+    "java-edition",
+    "minecraft-protocol",
+    "packet",
+    "client",
+    "server",
+    "1.21.10",
+    "protocol-773"
+  ],
+  "author": "xwzcc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xwzcc/obsidian-bridge.git",
+    "directory": "packages/java-protocol"
+  },
+  "bugs": {
+    "url": "https://github.com/xwzcc/obsidian-bridge/issues"
+  },
+  "homepage": "https://github.com/xwzcc/obsidian-bridge/blob/master/packages/java-protocol/README.md",
   "dependencies": {
-    "@obsidian-bridge/core": "workspace:*",
-    "@obsidian-bridge/nbt": "workspace:*"
+    "@obsidian-bridge/core": "^0.1.0",
+    "@obsidian-bridge/world": "^0.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
